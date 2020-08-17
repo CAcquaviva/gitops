@@ -10,7 +10,7 @@ info:
 servers:
   - url: 'http://mockbin.org/request'
     description: mockbin
-paths:    
+paths:
   '/v1/order/{id}':
     get:
       summary: Fetches an order
@@ -19,7 +19,7 @@ paths:
       x-kong-plugin-mocking:
         enabled: true
         config:
-          api_specification_filename: orders.yaml     
+          api_specification_filename: orders.yaml
       responses:
         '200':
           description: Order object
@@ -36,6 +36,7 @@ paths:
                       "address": "123 W. Division St.",
                       "address2": "Apt 20E",
                       "city": "Chicago",
+                      "zipcode": "60000"
                       "pizzas":[
                         {
                           "description": "Large, all pepperoni, mushroom. Half onion",
@@ -45,18 +46,18 @@ paths:
                             {"side": "B", "code": "M"},
                             {"side": "R", "code": "O"},
                             {"side": "R", "code": "S"}
-                        ]                        
+                        ]
                         },
                         {
                           "description": "Small, all mushroom and spinach",
                           "size": "S",
                           "toppings":[
                             {"side": "B", "code": "M"},
-                            {"side": "B", "code": "SP"} 
-                          ]                           
+                            {"side": "B", "code": "SP"}
+                          ]
                         }
                       ]
-                    }          
+                    }
       description: "Fetch an order"
       parameters:
         - schema:
@@ -94,12 +95,12 @@ components:
           type: string
           enum:
           - S
-          - M 
+          - M
           - L
           - XL
         toppings:
           type: array
-          items: 
+          items:
             $ref: "#/components/schema/Topping"
     Pizzas:
       type: array
