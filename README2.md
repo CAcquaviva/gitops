@@ -4,9 +4,9 @@ This repository provides a template for doing your own demonstration of the end 
 
 ![e2e](https://kong-sales-engineering.s3.us-east-2.amazonaws.com/images/e2e.png)
 
-Prerequisites
+Prerequisitesk
 ---
-* Clone the [kong-plugin-mocking](https://github.com/Kong/kong-plugin-mocking) repository to your machine. 
+* Clone the [kong-plugin-mocking](https://github.com/Kong/kong-plugin-mocking) repository to your machine.
 * A running instance of Kong EE with the Developer Portal enabled in the default workspace. We are assuming a Docker install.
 * Install [kong-portal-cli](https://github.com/Kong/kong-portal-cli)
 * Install [Helm](http://helm.sh)
@@ -18,7 +18,7 @@ Steps for Creating a Running Demo
 1. Create your own repository with this template
 1. Clone your repository
 1. Run `npm install` in your `$PROJECT_ROOT`
-1. Create and run a self hosted Github Action Runner inside your `$PROJECT_ROOT`. 
+1. Create and run a self hosted Github Action Runner inside your `$PROJECT_ROOT`.
 
 ![action](https://kong-sales-engineering.s3.us-east-2.amazonaws.com/images/action-gitops-demo.png)
 
@@ -45,14 +45,14 @@ The Golden Use Case
 ---
 Once your Kong environment is up and running, we are ready to demonstrate the golden use case. In order to do so, we will edit an OpenAPI specification and push the changes to Github. After we push the changes, a 2-step Github Action workflow will execute. The first step will generate a Kong configuration file from the OpenAPI specification using our `openapi-2-kong` NodeJS library, and apply it to your running version of Kong using helm or decK. The second step will deploy the OpenAPI specification to the Developer Portal using the `portal` command line application.
 
-Steps to Run in Kubernetes 
+Steps to Run in Kubernetes
 ---
 1. Configure workflow to use kong-for-kubernetes. Open `$PROJECT_ROOT/.github/workflows/main.yml` and edit the `kong-config-type` input. ![k4k8s-edit](https://kong-sales-engineering.s3.us-east-2.amazonaws.com/images/k4k8s-edit.png)
 1. Open the `$PROJECT_ROOT/workspaces/default/specs/orders.yaml` file in your favorite text editor.
 1. Edit the example response value however you like. For example, add a "zipcode" field. ![edit-oas](https://kong-sales-engineering.s3.us-east-2.amazonaws.com/images/edit_oas.png)
 1. Commit and push your changes.
 
-Steps to Run in Docker 
+Steps to Run in Docker
 ---
 1. Configure workflow to use kong-declarative-config. Open `$PROJECT_ROOT/.github/workflows/main.yml` and edit the `kong-config-type` input. ![deck-edit](https://kong-sales-engineering.s3.us-east-2.amazonaws.com/images/deck-edit.png)
 1. Open the `$PROJECT_ROOT/workspaces/default/specs/orders.yaml` file in your favorite text editor.
